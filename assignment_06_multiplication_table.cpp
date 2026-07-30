@@ -57,3 +57,53 @@
 #include <iostream>
 using namespace std;
 
+C++
+#include <iostream>
+
+using namespace std;
+
+// Function to print a single table (1 to 12)
+void printTable(int num) {
+    cout << "\nMultiplication Table for " << num << ":\n";
+    for (int i = 1; i <= 12; i++) {
+        cout << num << " x " << i << " = " << (num * i) << endl;
+    }
+}
+
+int main() {
+    int choice, n;
+
+    cout << "1. Single Table\n";
+    cout << "2. Tables 1 to N\n";
+    cout << "Choice: ";
+    cin >> choice;
+
+    if (choice == 1) {
+        cout << "Enter number: ";
+        cin >> n;
+
+        if (n <= 0) {
+            cout << "Error: Invalid number!" << endl;
+        } else {
+            printTable(n);
+        }
+
+    } else if (choice == 2) {
+        cout << "Enter N: ";
+        cin >> n;
+
+        if (n <= 0) {
+            cout << "Error: Invalid number!" << endl;
+        } else {
+            for (int i = 1; i <= n; i++) {
+                printTable(i);
+                cout << "---------------------------\n";
+            }
+        }
+
+    } else {
+        cout << "Invalid choice!\n";
+    }
+
+    return 0;
+}
