@@ -65,3 +65,83 @@
 #include <string>
 using namespace std;
 
+C++
+#include <iostream>
+#include <iomanip> // Needed for setw()
+
+using namespace std;
+
+// Maximum size constraint required by assignment
+const int MAX_SIZE = 10;
+
+// Function prototypes
+void inputMatrix(int matrix[MAX_SIZE][MAX_SIZE], int rows, int cols);
+void displayMatrix(const int matrix[MAX_SIZE][MAX_SIZE], int rows, int cols);
+void transposeMatrix(const int input[MAX_SIZE][MAX_SIZE], int output[MAX_SIZE][MAX_SIZE], int rows, int cols);
+void addMatrices(const int A[MAX_SIZE][MAX_SIZE], const int B[MAX_SIZE][MAX_SIZE], int result[MAX_SIZE][MAX_SIZE], int rows, int cols);
+void multiplyMatrices(const int A[MAX_SIZE][MAX_SIZE], const int B[MAX_SIZE][MAX_SIZE], int result[MAX_SIZE][MAX_SIZE], int M, int N, int P);
+
+int main() {
+    int choice;
+
+    cout << "========================================\n";
+    cout << "       MATRIX OPERATIONS CALCULATOR     \n";
+    cout << "========================================\n";
+    cout << "1. Part A: Transpose a Matrix\n";
+    cout << "2. Part B: Add Two Matrices\n";
+    cout << "3. Part C: Multiply Two Matrices\n";
+    cout << "Enter your choice (1-3): ";
+    cin >> choice;
+
+    if (choice == 1) {
+        // --- PART A: TRANSPOSE ---
+        int rows, cols;
+        int matrix[MAX_SIZE][MAX_SIZE];
+        int transposed[MAX_SIZE][MAX_SIZE];
+
+        cout << "\n--- Part A: Transpose Matrix ---\n";
+        cout << "Enter number of rows: ";
+        cin >> rows;
+        cout << "Enter number of columns: ";
+        cin >> cols;
+
+        inputMatrix(matrix, rows, cols);
+
+        cout << "\nOriginal Matrix:\n";
+        displayMatrix(matrix, rows, cols);
+
+        transposeMatrix(matrix, transposed, rows, cols);
+
+        cout << "\nTransposed Matrix:\n";
+        displayMatrix(transposed, cols, rows); // Dimensions swap for transpose
+
+    } else if (choice == 2) {
+        // --- PART B: ADDITION ---
+        int rows, cols;
+        int matrixA[MAX_SIZE][MAX_SIZE];
+        int matrixB[MAX_SIZE][MAX_SIZE];
+        int sum[MAX_SIZE][MAX_SIZE];
+
+        cout << "\n--- Part B: Add Matrices ---\n";
+        cout << "Enter number of rows: ";
+        cin >> rows;
+        cout << "Enter number of columns: ";
+        cin >> cols;
+
+        cout << "\nMatrix A:\n";
+        inputMatrix(matrixA, rows, cols);
+
+        cout << "\nMatrix B:\n";
+        inputMatrix(matrixB, rows, cols);
+
+        addMatrices(matrixA, matrixB, sum, rows, cols);
+
+        cout << "\nSum Result (A + B):\n";
+        displayMatrix(sum, rows, cols);
+
+    } else if (choice == 3) {
+        // --- PART C: MULTIPLICATION ---
+        int M, N, N_B, P;
+        int matrixA[MAX_SIZE][MAX_SIZE];
+        int matrixB[MAX_SIZE][MAX_SIZE];
+        int product[MAX_SIZE][MAX_SIZE];
